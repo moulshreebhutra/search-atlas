@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moulshree Bhutra × Search Atlas</title>
+<meta name="description" content="An application to Search Atlas for the Product Engineer (PM) role: who I am, how I understand the product, and my 30/60/90 day plan.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1d1233;
+  --bg2:#2a1b49;
+  --card:#33235a;
+  --card2:#3a2a65;
+  --line:rgba(201,182,255,.18);
+  --text:#efe9ff;
+  --muted:#b9acd9;
+  --lav:#c9b6ff;
+  --violet:#8b6cf0;
+  --mint:#6efad0;
+  --mint-ink:#0d2a22;
+  --warn:#ffd48a;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,#3d2872 0,transparent 60%),radial-gradient(900px 500px at -10% 20%,#2f1d5a 0,transparent 55%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--lav)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4{line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.1rem,5.4vw,3.8rem);font-weight:800}
+h2{font-size:clamp(1.6rem,3.6vw,2.4rem);font-weight:800}
+h3{font-size:1.2rem;color:#fff}
+h4{font-size:1rem;color:var(--lav)}
+p{margin:0 0 1em;color:var(--text)}
+.muted{color:var(--muted)}
+.lav{color:var(--lav)}
+.mint{color:var(--mint)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(29,18,51,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{font-weight:800;letter-spacing:-.02em;text-decoration:none;color:#fff;white-space:nowrap}
+.brand span{color:var(--mint)}
+.navlinks{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:.9rem;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.navlinks a:hover{color:#fff;background:rgba(201,182,255,.1)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:var(--mint-ink);font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px;border:0;font-size:1rem;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 30px -8px rgba(110,250,208,.55)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{background:rgba(201,182,255,.1)}
+
+section{padding:84px 0;position:relative}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:14px}
+.lead{font-size:1.15rem;color:var(--muted);max-width:760px}
+
+/* hero */
+.hero{padding:96px 0 70px}
+.hero h1 .grad{background:linear-gradient(90deg,var(--lav),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.about{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;margin-top:64px}
+.panel{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{font-size:.82rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--lav);background:rgba(201,182,255,.06)}
+.shipped a{display:block;text-decoration:none;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line)}
+.shipped a:last-child{border-bottom:0}
+.shipped small{display:block;color:var(--muted)}
+
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+.why .panel{padding:22px}
+.why .ico{font-size:1.5rem;margin-bottom:10px}
+.why p{color:var(--muted);font-size:.95rem;margin:0}
+
+/* flow */
+.flow{display:flex;align-items:stretch;gap:0;margin:26px 0;flex-wrap:nowrap}
+.node{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px;font-size:.9rem;position:relative;min-width:0}
+.node b{display:block;color:#fff;margin-bottom:2px}
+.node span{color:var(--muted);font-size:.84rem;display:block}
+.node.hl{border-color:var(--mint);background:linear-gradient(180deg,rgba(110,250,208,.12),var(--card))}
+.arr{flex:0 0 28px;display:flex;align-items:center;justify-content:center;color:var(--mint);font-size:1.2rem}
+.arr::before{content:"→"}
+.flowtitle{font-size:.82rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:-10px;margin-top:30px}
+
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.ba .panel h4{margin-bottom:8px}
+.ba ul{margin:0;padding-left:18px;color:var(--muted)}
+.ba li{margin:4px 0}
+
+/* personas / pain */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:22px 0}
+.persona h3{margin-bottom:4px}
+.persona .who{color:var(--mint);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.persona ul{padding-left:18px;margin:8px 0 0;color:var(--muted);font-size:.93rem}
+
+.map{width:100%;border-collapse:separate;border-spacing:0 8px;margin-top:10px}
+.map th{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 14px 4px}
+.map td{background:var(--card);padding:14px;font-size:.92rem;vertical-align:top;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.map td:first-child{border-left:1px solid var(--line);border-radius:12px 0 0 12px}
+.map td:last-child{border-right:1px solid var(--line);border-radius:0 12px 12px 0}
+.map td:nth-child(3){color:var(--mint);font-weight:600}
+
+/* tabs */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin}
+.tab{flex:0 0 auto;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-size:.92rem;cursor:pointer;white-space:nowrap}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{background:var(--lav);color:#241347;border-color:var(--lav);font-weight:700}
+.tabpanel{display:none;animation:fade .3s ease}
+.tabpanel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tabpanel .panel{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
+.kv{margin:0;padding:0;list-style:none}
+.kv li{padding:9px 0;border-bottom:1px solid var(--line);font-size:.93rem;color:var(--muted)}
+.kv li:last-child{border-bottom:0}
+.kv li b{color:var(--text)}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:rgba(255,212,138,.14);color:var(--warn);vertical-align:middle;margin-left:6px}
+
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--warn);padding:6px 0 6px 14px;margin:18px 0}
+
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.phase{display:flex;flex-direction:column}
+.phase .day{font-size:3rem;font-weight:800;line-height:1;background:linear-gradient(180deg,var(--mint),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.phase h3{margin:6px 0 4px}
+.phase .theme{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+.phase ul{margin:0 0 14px;padding-left:18px;font-size:.93rem;color:var(--text)}
+.phase li{margin:6px 0}
+.phase .out{margin-top:auto;border-top:1px solid var(--line);padding-top:12px;font-size:.88rem;color:var(--muted)}
+.phase .out b{color:var(--mint)}
+.timeline{height:6px;border-radius:99px;background:linear-gradient(90deg,var(--lav),var(--violet) 50%,var(--mint));margin:26px 0 0;opacity:.8}
+
+.close{text-align:center;padding:90px 0 110px}
+.close h2{max-width:760px;margin:0 auto 16px}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in,.no-js .reveal{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .about,.tabpanel .panel,.ba,.grid2{grid-template-columns:1fr}
+  .grid3,.plan{grid-template-columns:1fr}
+  .why{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  section{padding:60px 0}
+  .flow{flex-direction:column}
+  .arr{flex:0 0 26px}
+  .arr::before{content:"↓"}
+  .why{grid-template-columns:1fr}
+  .map thead{display:none}
+  .map,.map tbody,.map tr,.map td{display:block;width:100%}
+  .map tr{margin-bottom:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .map td{border:0 !important;border-radius:0 !important;background:transparent;padding:8px 14px}
+  .map td::before{content:attr(data-l);display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .brand{font-size:.92rem}
+}
+
+.shell{max-width:1360px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:7fr 3fr;gap:36px;align-items:start}
+.shell main{min-width:0}
+.shell .wrap{max-width:none;padding:0}
+.shell #product{background:none!important}
+.side{position:sticky;top:84px;margin-top:40px}
+.toc a{display:block;text-decoration:none;color:var(--muted);padding:12px 12px;margin:0 -12px;border-radius:10px;border-left:3px solid transparent}
+.toc a b{color:inherit}
+.toc a:hover{color:#fff;background:rgba(201,182,255,.08)}
+.toc a.on{color:#fff;border-left-color:var(--mint);background:rgba(110,250,208,.07)}
+.side .panel{padding:22px}
+.side .shipped a{padding:12px 0}
+.hcard{position:relative;border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4.5vw,52px);margin-top:22px;background:radial-gradient(520px 320px at 0% 0%,rgba(201,182,255,.16),transparent 70%),radial-gradient(520px 340px at 100% 100%,rgba(110,250,208,.10),transparent 70%),linear-gradient(180deg,rgba(51,35,90,.55),rgba(29,18,51,.6));overflow:hidden}
+.hcard.alt{background:radial-gradient(500px 300px at 100% 0%,rgba(201,182,255,.35),transparent 70%),linear-gradient(135deg,#5a3fb0,#3d2a82);border-color:rgba(201,182,255,.35)}
+.hcard h1{margin-top:6px}
+.hero .it{font-family:"Source Serif 4","Newsreader",Georgia,"Times New Roman",serif;font-style:normal;font-weight:500;font-size:clamp(1.3rem,2.4vw,1.8rem);line-height:1.35;color:#fff;margin:0;max-width:760px}
+.hero .lead{max-width:780px}
+.impact-h{margin:34px 0 14px}
+.impact-p{color:var(--muted);max-width:820px}
+.impact{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:20px 0 8px}
+.impact>div{padding:22px 20px;border-right:1px solid var(--line)}
+.impact>div:last-child{border-right:0}
+.impact .n{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.6vw,2.8rem);font-weight:700;line-height:1;background:linear-gradient(90deg,var(--lav),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.impact .l{color:var(--muted);font-size:.9rem;margin-top:10px}
+.fit-h{margin:46px 0 0}
+.shell .why{grid-template-columns:repeat(2,1fr)}
+@media (max-width:1000px){
+  .shell{grid-template-columns:1fr;gap:0}
+  .side{display:none}
+  .impact{grid-template-columns:1fr 1fr}
+  .impact>div:nth-child(2){border-right:0}
+  .impact>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:720px){.shell{padding:0 16px}.shell .why{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Moulshree <span>×</span> Search Atlas</a>
+    <div class="navlinks">
+      <a href="https://drive.google.com/file/d/1GHfC6ox5rxPm594xy54xIWD2Hj_x71h_/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <a href="https://www.linkedin.com/in/moulshree-bhutra-159a99118" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://moulshree-portfolio.vercel.app" target="_blank" rel="noopener">Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ 1. STARTING ============ -->
+<header id="top" class="hero">
+  <div class="wrap" id="start">
+    <div class="hcard">
+      <span class="eyebrow">Application · Product Engineer (PM)</span>
+      <h1>Hey Search Atlas, I'd love to join you on your journey to become the <span class="grad">best SEO tool for businesses.</span></h1>
+      <p class="lead">I'm Moulshree, an AI-native PM with a strong design sense. Building and scaling 0→1 B2B SaaS products at startups for 3+ years. I enjoy figuring out what's worth solving, while also making the solution a joy to use.</p>
+    </div>
+    <div class="hcard alt">
+      <p class="it">Along with applying, I've put effort into understanding your product &amp; drafted a 30/60/90 plan so that I can hit the ground running from day 1.</p>
+      <div class="cta">
+        <a class="btn" href="#product">My breakdown of Search Atlas →</a>
+        <a class="btn ghost" href="#plan">My 30/60/90 day plan</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+<main>
+<section id="why" style="padding-top:40px">
+  <div class="wrap">
+    <span class="eyebrow">Why you should hire me</span>
+    <h2>A great fit with the role: AI-native product manager with a design and computer science background.</h2>
+    <p class="impact-p">At Vudio.ai, I've launched multiple 0-to-1 products, taking full ownership from discovery to launch, driving platform growth from a video-commerce tool into an AI-powered marketing suite for D2C brands, and contributing to a <b style="color:#fff">30x ARR uplift ($10K → $300K)</b> over the last 2 years.</p>
+    <p class="impact-p">Currently, I own two core revenue-driving products: <b style="color:#fff">Shoppable Widgets</b> (scaled to 1,000+ clients) and <b style="color:#fff">AI Studio</b> (5% ARPU uplift), with a focus on funnel optimisation across onboarding, activation, adoption and retention: solving customer pain points and simplifying high-friction user flows.</p>
+
+    <h3 class="impact-h">My impact</h3>
+    <div class="impact reveal">
+      <div><div class="n">30x</div><div class="l">ARR growth in two years, $10K to $300K</div></div>
+      <div><div class="n">~74%</div><div class="l">activation lift from self-serve onboarding</div></div>
+      <div><div class="n">10+</div><div class="l">zero-to-one launches</div></div>
+      <div><div class="n">1,000+</div><div class="l">clients, including Shoppers Stop and Godrej</div></div>
+    </div>
+
+    <h3 class="fit-h">A great fit with the role</h3>
+    <div class="why">
+      <div class="panel reveal"><div class="ico">⌨️</div><h3>I'm an AI-native PM who's shipped code to prod</h3><p>I understand code and have shipped to production. I'm comfortable with the Django/React stack, SQL and REST APIs, and I use AI coding tools like Claude Code to prototype fast. I write problem-first specs engineers can build from, with test plans and release sign-off.</p></div>
+      <div class="panel reveal"><div class="ico">🎨</div><h3>I design too</h3><p>I started as a product designer, built a mobile design system, and later hired and led a three-person design pod. I notice rough edges in a flow before users do.</p></div>
+      <div class="panel reveal"><div class="ico">🌱</div><h3>I've done 0 → 1, repeatedly</h3><p>Multiple zero-to-one launches at Vudio.ai. AI Studio became its most-used feature within 60 days. I'm at home with the vague start: find the problem in customer calls, cut scope, ship, learn.</p></div>
+      <div class="panel reveal"><div class="ico">⚡</div><h3>I take ownership fast</h3><p>I rebuilt self-serve onboarding and the core widgets module in four weeks, launching with A/B tests and phased weblab rollouts. Test plans, staged releases and checking the result afterwards are how I work.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. PRODUCT UNDERSTANDING ============ -->
+<section id="product" style="background:linear-gradient(180deg,transparent,rgba(42,27,73,.55) 12%,rgba(42,27,73,.55) 88%,transparent)">
+  <div class="wrap">
+    <span class="eyebrow">Section 2 · Product understanding</span>
+    <h2>I tried to understand your product before joining, so I can hit the ground running.</h2>
+    <p class="lead">Here's how I understand Search Atlas: what it does, who it's for, what hurts for those customers and how each part of the product answers that. It's built from your site, help center, blog, pricing and public reviews. Please correct me where I've got it wrong; that's the fastest way for me to learn.</p>
+
+    <!-- What it does -->
+    <h3 style="margin-top:46px">1 · What Search Atlas does</h3>
+    <p class="muted" style="max-width:780px">SEO used to mean: use many tools to find problems, export lists, hand them to developers or writers, wait, then check whether anything changed. Search Atlas's bet is <b style="color:#fff">execution, not dashboards</b>: one platform that finds the problem <i>and</i> ships the fix, for classic Google search and for AI answers (ChatGPT, Gemini, Perplexity and so on).</p>
+
+    <div class="flowtitle">The core loop, as I understand it</div>
+    <div class="flow reveal">
+      <div class="node"><b>1 · Connect</b><span>Site, Search Console, analytics, CMS</span></div><div class="arr"></div>
+      <div class="node"><b>2 · Diagnose</b><span>Audit, rankings, competitors, AI visibility</span></div><div class="arr"></div>
+      <div class="node hl"><b>3 · Act</b><span>OTTO / Atlas Agent apply fixes and create content</span></div><div class="arr"></div>
+      <div class="node"><b>4 · Verify</b><span>Indexing, rank &amp; traffic tracking, rollback if needed</span></div><div class="arr"></div>
+      <div class="node"><b>5 · Report</b><span>Client-ready reports, grading</span></div>
+    </div>
+
+    <div class="ba reveal">
+      <div class="panel">
+        <h4>Before (the stitched-together way)</h4>
+        <ul>
+          <li>Separate tools for audits, keywords, rank tracking, content, links, local, reporting</li>
+          <li>Audit says "fix 300 issues"; a developer ticket queue turns it into weeks</li>
+          <li>Writers brief by spreadsheet; reports assembled by hand each month</li>
+          <li>No view at all of how often AI tools mention the brand</li>
+        </ul>
+      </div>
+      <div class="panel" style="border-color:var(--mint)">
+        <h4 class="mint">With Search Atlas (the pitch)</h4>
+        <ul>
+          <li>One workspace for the whole workflow</li>
+          <li>Fixes deployed through a script, Worker or CMS connector, often without a dev ticket</li>
+          <li>Agent and playbooks turn instructions into done work</li>
+          <li>AI-visibility tracking sits next to classic SEO</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Customers -->
+    <h3 style="margin-top:46px">2 · Who the customers are</h3>
+    <div class="grid3">
+      <div class="panel persona reveal"><div class="who">Agencies</div><h3>Run SEO for many clients</h3><ul><li>Care about margin per client and time per report</li><li>Need white-label reporting, multi-site management</li><li>Want to say "yes" to more clients without more headcount</li></ul></div>
+      <div class="panel persona reveal"><div class="who">Local businesses &amp; freelancers</div><h3>Own the site, no SEO team</h3><ul><li>Care about calls, bookings, map-pack visibility</li><li>Can't read a 200-item audit</li><li>Want someone (or something) to just do it</li></ul></div>
+      <div class="panel persona reveal"><div class="who">In-house &amp; enterprise teams</div><h3>Small team, big site</h3><ul><li>Care about scale, approvals and proof of impact</li><li>Dev time is the bottleneck</li><li>Now being asked by leadership: "are we in ChatGPT?"</li></ul></div>
+    </div>
+
+    <!-- Pain -> feature -->
+    <h3 style="margin-top:46px">3 · Pain points and which feature answers them</h3>
+    <table class="map">
+      <thead><tr><th>Pain point</th><th>Who feels it</th><th>Search Atlas answer</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Pain point">"I know what's wrong with my site, but dev can't prioritise the fixes."</td><td data-l="Who">All, especially in-house</td><td data-l="Answer">OTTO SEO deploys technical and on-page fixes directly</td></tr>
+        <tr><td data-l="Pain point">"Too many tools and logins; reporting takes a day each month."</td><td data-l="Who">Agencies</td><td data-l="Answer">One platform + Report Builder / white-label reports</td></tr>
+        <tr><td data-l="Pain point">"Customers now ask in ChatGPT, not Google. Are we showing up?"</td><td data-l="Who">Everyone</td><td data-l="Answer">LLM Visibility tracking + content/PR levers</td></tr>
+        <tr><td data-l="Pain point">"I don't have time to write and plan content that actually ranks."</td><td data-l="Who">SMBs, freelancers</td><td data-l="Answer">Topical Maps, Content Genius, SCHOLAR</td></tr>
+        <tr><td data-l="Pain point">"I'm invisible in the local map pack."</td><td data-l="Who">Local businesses</td><td data-l="Answer">GBP Galactic, Local Citations</td></tr>
+        <tr><td data-l="Pain point">"I don't know where to start, or what to do next."</td><td data-l="Who">Non-experts</td><td data-l="Answer">Atlas Agent: ask in plain language, run Playbooks</td></tr>
+        <tr><td data-l="Pain point">"New pages take forever to get indexed."</td><td data-l="Who">Publishers, e-commerce</td><td data-l="Answer">Indexer / OTTO instant indexing (GSC + IndexNow)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Features tabs -->
+    <h3 style="margin-top:50px">4 · The features, in short</h3>
+    <p class="muted">Basics only; click through the tabs.</p>
+
+    <div class="tabs" role="tablist" aria-label="Search Atlas features">
+      <button class="tab" role="tab" aria-selected="true" data-t="otto">OTTO SEO</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="llm">AI / LLM Visibility</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="agent">Atlas Agent &amp; Coworker</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="content">Content &amp; Topical Maps</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="local">Local SEO</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="ads">Ads &amp; Website</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="links">Links &amp; PR</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="research">Research &amp; Reporting</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="plans">Plans &amp; credits</button>
+    </div>
+
+    <!-- OTTO -->
+    <div class="tabpanel on" id="tab-otto" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>OTTO SEO · the "do it for me" engine</h3>
+          <p class="muted">OTTO finds technical and on-page SEO issues (titles, meta descriptions, schema, alt text, internal links, canonical tags and more) and applies the fixes to the live site, instead of leaving a to-do list.</p>
+          <ul class="kv">
+            <li><b>How it gets onto your site:</b> a JavaScript pixel, a Cloudflare Worker, CMS connectors (WordPress, Shopify, Webflow, HubSpot, Contentful, Duda) or a code pipeline (GitHub / Vercel / Netlify)</li>
+            <li><b>Control:</b> approval mode, so changes can be reviewed first, plus rollback</li>
+            <li><b>Speed:</b> instant indexing via Google Search Console and IndexNow</li>
+            <li><b>Safety:</b> "Deep Freeze" to lock pages from being changed; OTTO Grade as a health score</li>
+            <li><b>Worth knowing:</b> per the help center, pixel-applied changes render client-side, so they may not show up in the CMS or in the Site Auditor <span class="tag">my reading of docs</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="flowtitle" style="margin-top:0">How a fix travels</div>
+          <div class="flow" style="flex-direction:column;gap:0">
+            <div class="node"><b>Crawl</b><span>Finds issues on every page</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Propose</b><span>Generates the fix</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node hl"><b>Approve</b><span>Auto or manual review</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Deploy</b><span>Pixel / Worker / CMS / code</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Index &amp; monitor</b><span>Rollback if needed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LLM -->
+    <div class="tabpanel" id="tab-llm" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>AI / LLM Visibility · "does AI recommend us?"</h3>
+          <p class="muted">Instead of ranking on a results page, brands now get mentioned (or not) inside an AI-written answer. This feature asks AI assistants a set of questions about your market, records the answers and measures how often and how favourably you appear.</p>
+          <ul class="kv">
+            <li><b>Tabs:</b> Summary · Visibility · Sentiment · Topics &amp; Queries</li>
+            <li><b>Engines (by plan):</b> ChatGPT, Gemini and Google AI Mode on Growth; plus Copilot, Perplexity and Claude on Pro</li>
+            <li><b>What it measures:</b> mentions, share of voice vs competitors, sentiment, which sources get cited</li>
+            <li><b>Queries:</b> generated by what they call a proprietary research framework <span class="tag">vendor claim</span></li>
+            <li><b>Caveat (industry-wide):</b> AI answers vary run to run, so scores are best read as trends, not exact ranks</li>
+          </ul>
+        </div>
+        <div>
+          <div class="flowtitle" style="margin-top:0">How the score is made</div>
+          <div class="flow" style="flex-direction:column;gap:0">
+            <div class="node"><b>Prompt set</b><span>Questions real buyers might ask</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Ask each AI engine</b><span>Repeatedly, on schedule</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Parse answers</b><span>Brand mentions, sentiment, cited sources</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node hl"><b>Dashboard</b><span>Visibility vs competitors, over time</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent -->
+    <div class="tabpanel" id="tab-agent" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>Atlas Agent &amp; Coworker · "tell it, don't click it"</h3>
+          <p class="muted">A conversational layer on top of the platform. Describe the outcome in plain language; the agent runs the steps across the tools.</p>
+          <ul class="kv">
+            <li><b>Atlas Agent:</b> chat-driven execution inside the app</li>
+            <li><b>Playbooks:</b> repeatable multi-step routines (e.g. a monthly audit + report)</li>
+            <li><b>Coworker:</b> brings those routines into Slack / Teams so the team can trigger and receive results where they already work</li>
+            <li><b>Why it matters:</b> lowers the skill needed to use a very wide product</li>
+          </ul>
+        </div>
+        <div>
+          <div class="flow" style="flex-direction:column;gap:0">
+            <div class="node"><b>"Fix my product pages"</b><span>Plain-language goal</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node hl"><b>Agent plans</b><span>Picks tools, order, checks</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Runs the work</b><span>OTTO, content, reports</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Reports back</b><span>In app or in Slack/Teams</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="tabpanel" id="tab-content" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>Content, Topical Maps &amp; SCHOLAR</h3>
+          <p class="muted">Helps decide <i>what</i> to write, writes it and scores whether it's good enough to compete.</p>
+          <ul class="kv">
+            <li><b>Topical Maps:</b> organises a niche into topic clusters so the site covers a subject completely</li>
+            <li><b>Content Genius:</b> AI writing assistant that drafts and optimises content against competitors</li>
+            <li><b>SCHOLAR:</b> content scoring / optimisation guidance</li>
+            <li><b>Pain solved:</b> briefs, outlines and "is this good enough?" guesswork</li>
+          </ul>
+        </div>
+        <div>
+          <div class="flow" style="flex-direction:column;gap:0">
+            <div class="node"><b>Niche</b><span>Business &amp; keywords</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Topical map</b><span>Clusters &amp; gaps</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Draft &amp; score</b><span>Content Genius / SCHOLAR</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node hl"><b>Publish &amp; index</b><span>Then track rankings</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Local -->
+    <div class="tabpanel" id="tab-local" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>Local SEO · GBP Galactic &amp; Local Citations</h3>
+          <p class="muted">For businesses that win or lose on "near me" searches and the Google map pack.</p>
+          <ul class="kv">
+            <li><b>GBP Galactic:</b> manages and optimises Google Business Profiles (posts, info, reviews, tracking)</li>
+            <li><b>Local Citations:</b> keeps the business name/address/phone consistent across directories</li>
+            <li><b>Pain solved:</b> repetitive profile upkeep across many locations or clients</li>
+          </ul>
+        </div>
+        <div>
+          <div class="flow" style="flex-direction:column;gap:0">
+            <div class="node"><b>Business profile</b><span>Google Business Profile</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Optimise &amp; post</b><span>Info, posts, reviews</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node hl"><b>Citations</b><span>Consistent listings</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ads -->
+    <div class="tabpanel" id="tab-ads" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>Ads &amp; Website Studio</h3>
+          <p class="muted">Pushes beyond organic SEO into paid and site building, so a small team can run more of marketing in one place.</p>
+          <ul class="kv">
+            <li><b>Smart Ads:</b> AI-assisted ad campaign creation and optimisation</li>
+            <li><b>Meta Ads Studio:</b> creating and managing Meta (Facebook/Instagram) ads</li>
+            <li><b>Website Studio:</b> AI site/page builder</li>
+            <li><b>Idea:</b> a wider "marketing platform" story, not just SEO</li>
+          </ul>
+        </div>
+        <div>
+          <p class="muted" style="margin:0">I'd want to go deeper on how adoption of these compares with core SEO. They widen the product, and I'd like to know whether customers treat them as core or as add-ons.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="tabpanel" id="tab-links" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>Links, PR &amp; Indexing</h3>
+          <p class="muted">Authority still matters, for Google and increasingly for what AI tools trust and cite.</p>
+          <ul class="kv">
+            <li><b>Link building outreach:</b> finding and contacting sites for backlinks</li>
+            <li><b>Press release distribution:</b> spreads brand news to publications (also a source AI tools can cite)</li>
+            <li><b>Indexer:</b> nudges search engines to discover new or changed pages quickly</li>
+          </ul>
+        </div>
+        <div>
+          <div class="flow" style="flex-direction:column;gap:0">
+            <div class="node"><b>Earn mentions</b><span>Outreach, PR</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node"><b>Get discovered</b><span>Indexer</span></div><div class="arr" style="transform:rotate(90deg);flex-basis:22px"></div>
+            <div class="node hl"><b>Authority ↑</b><span>Search &amp; AI citations</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research -->
+    <div class="tabpanel" id="tab-research" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>Research, Auditing &amp; Reporting</h3>
+          <p class="muted">The classic SEO toolkit, plus client-facing outputs.</p>
+          <ul class="kv">
+            <li><b>Site Auditor:</b> crawls a site and lists technical issues</li>
+            <li><b>Site Explorer:</b> competitor/backlink/keyword research</li>
+            <li><b>QUEST:</b> keyword/question research</li>
+            <li><b>Report Builder / Portfolio Summary:</b> white-label reports and a roll-up across clients</li>
+          </ul>
+        </div>
+        <div>
+          <p class="muted" style="margin:0">This is the layer agencies pay for monthly: proof of work. If OTTO changes don't appear in the Site Auditor (see OTTO tab), reconciling "what we shipped" with "what the audit sees" is exactly the kind of seam a Product Engineer would care about.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plans -->
+    <div class="tabpanel" id="tab-plans" role="tabpanel">
+      <div class="panel">
+        <div>
+          <h3>Plans &amp; credits</h3>
+          <p class="muted">Public pricing as I read it today; please correct me if it has moved.</p>
+          <ul class="kv">
+            <li><b>Starter</b> $99 / month</li>
+            <li><b>Growth</b> $199 / month</li>
+            <li><b>Pro</b> $399 / month</li>
+            <li><b>Agency</b> from $999 / month</li>
+            <li><b>Trial:</b> 7 days, card required</li>
+            <li><b>Credits:</b> Universal Credits and HDC (Hyperdrive Credits) gate usage of heavier features</li>
+          </ul>
+        </div>
+        <div>
+          <p class="muted" style="margin:0">The "one platform replaces roughly $8,000 a month of tools" line is positioning, not a number I could verify <span class="tag">vendor claim</span>. Where the plan and credit model creates confusion at sign-up is, I suspect, where a lot of first-week friction lives.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Honest risk section -->
+    <h3 style="margin-top:56px">5 · Where I think the friction is</h3>
+    <p class="muted" style="max-width:780px">Not criticism, just what I'd want to dig into on day one. These come from public review sites and the way the product is built, so they're hypotheses to validate against your real data.</p>
+    <div class="grid2">
+      <div class="panel reveal"><h4>Trust at the start of the funnel</h4><p class="muted" style="margin:0">Some public reviews (e.g. Trustpilot) mention trial billing and cancellation surprises; I know Search Atlas disputes some of these. A card-required trial plus credits is a place where clarity matters most.</p></div>
+      <div class="panel reveal"><h4>"Did the change actually go live?"</h4><p class="muted" style="margin:0">A few reviewers say OTTO changes weren't applied or looked glitchy, and client-side rendering makes verification less obvious. Strong in-product proof (what changed, where, when) is a trust lever.</p></div>
+      <div class="panel reveal"><h4>Platform integrations</h4><p class="muted" style="margin:0">Shopify app ratings I saw are around 2.4–2.6. A wide integration surface means many ways for setup to go wrong.</p></div>
+      <div class="panel reveal"><h4>Making AI-visibility numbers believable</h4><p class="muted" style="margin:0">Because AI answers aren't deterministic, customers need to understand what a score means and what to do about it. Education and sensible defaults are part of the product.</p></div>
+    </div>
+    <p class="note">Everything above about the product comes from public sources. Items tagged "vendor claim" are Search Atlas's own marketing. I haven't had access to internal data, so treat these as an outsider's first read.</p>
+  </div>
+</section>
+
+<!-- ============ 3. 30/60/90 ============ -->
+<section id="plan">
+  <div class="wrap">
+    <span class="eyebrow">Section 3 · 30 / 60 / 90 day plan</span>
+    <h2>How I'd spend my first three months.</h2>
+    <p class="lead">Learn the product like a customer, earn trust by shipping small, then own something end to end. Built around what the role asks: problem-first specs, QA ownership and release sign-off.</p>
+
+    <div class="plan">
+      <div class="panel phase reveal">
+        <div class="day">30</div>
+        <h3>Learn &amp; earn trust</h3>
+        <div class="theme">Understand the customer, the code and the release process</div>
+        <ul>
+          <li>Use the product as a real customer would: set up a site, deploy OTTO, run an AI-visibility project, start to finish</li>
+          <li>Read support tickets, sales calls and reviews; list the top recurring problems with evidence</li>
+          <li>Walk the Django/React codebase and data model with engineers; get fluent in the key SQL tables</li>
+          <li>Learn the release flow, monitoring (Sentry / Grafana) and current QA gaps</li>
+          <li>Ship one small fix or improvement, end to end, with a spec and test plan</li>
+        </ul>
+        <div class="out"><b>Output:</b> a customer-journey map with friction points ranked, and one shipped improvement</div>
+      </div>
+      <div class="panel phase reveal">
+        <div class="day">60</div>
+        <h3>Own quality &amp; ship</h3>
+        <div class="theme">Be the person who signs off releases and writes the spec</div>
+        <ul>
+          <li>Write problem-first specs for the top 2–3 friction points, agreed with design and engineering</li>
+          <li>Own release sign-off: test plans, regression checklists, post-release checks</li>
+          <li>Build a lightweight "is it live?" verification habit for OTTO deployments (coverage varies by integration)</li>
+          <li>Set up simple dashboards for activation and feature health, using SQL and existing monitoring</li>
+          <li>Run weekly customer conversations and feed them straight into the backlog</li>
+        </ul>
+        <div class="out"><b>Output:</b> specs shipped, a repeatable release-QA process and a first health dashboard</div>
+      </div>
+      <div class="panel phase reveal">
+        <div class="day">90</div>
+        <h3>Own an outcome</h3>
+        <div class="theme">Take a slice of the roadmap from problem to measured result</div>
+        <ul>
+          <li>Own one area (e.g. onboarding to first value, or deployment verification) with a clear success metric</li>
+          <li>Launch a 0→1 improvement in that area; measure before/after</li>
+          <li>Write up what worked, what didn't and the next quarter's bets</li>
+          <li>Use AI tooling to speed up prototyping, test-case generation and spec drafting</li>
+          <li>Agree my priorities with the team for the next 90 days</li>
+        </ul>
+        <div class="out"><b>Output:</b> a measured outcome on an area I own, and a roadmap proposal</div>
+      </div>
+    </div>
+    <div class="timeline"></div>
+
+    <p class="note">Of course, the plan will change once I'm inside and see real data and priorities. The point is the approach: learn like a customer, ship small, own quality, then own an outcome.</p>
+  </div>
+</section>
+
+<section class="close" id="lets-talk">
+  <div class="wrap">
+    <span class="eyebrow">Let's talk</span>
+    <h2>I'd love to help make Search Atlas the best SEO tool for businesses.</h2>
+    <p class="lead" style="margin:0 auto 26px">Thanks for reading all the way down. I'd be glad to walk through any of this, or to be told where I got it wrong.</p>
+    <a class="btn" href="mailto:moulshreebhutra@gmail.com?subject=Product%20Engineer%20(PM)%20%C2%B7%20Moulshree%20Bhutra">Say hello →</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/moulshree-bhutra-159a99118" target="_blank" rel="noopener" style="margin-left:8px">LinkedIn</a>
+  </div>
+</section>
+
+</main>
+<aside class="side">
+  <div class="panel toc">
+    <span class="eyebrow">On this page</span>
+    <a href="#why" class="on"><b>Why hire me</b></a>
+    <a href="#product"><b>Search Atlas breakdown</b></a>
+    <a href="#plan"><b>My 30/60/90 day plan</b></a>
+    <a href="#lets-talk"><b>Let's talk</b></a>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Built by Moulshree Bhutra for Search Atlas. Not affiliated with or endorsed by Search Atlas.</span>
+    <span>Product facts from public sources · "vendor claim" = Search Atlas's own marketing</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // tabs
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function show(id){
+    tabs.forEach(function(t){t.setAttribute('aria-selected',String(t.dataset.t===id))});
+    [].slice.call(document.querySelectorAll('.tabpanel')).forEach(function(p){p.classList.toggle('on',p.id==='tab-'+id)});
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t.dataset.t)});
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+      if(n){n.focus();show(n.dataset.t);e.preventDefault()}
+    });
+  });
+  // sticky contents highlight
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  function setOn(){
+    var y=window.scrollY+160,cur=links[0];
+    links.forEach(function(a){var el=document.querySelector(a.getAttribute('href'));if(el&&el.getBoundingClientRect().top+window.scrollY<=y)cur=a});
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',setOn,{passive:true});setOn();
+  // reveal on scroll
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  } else { els.forEach(function(e){e.classList.add('in')}); }
+})();
+</script>
+</body>
+</html>
