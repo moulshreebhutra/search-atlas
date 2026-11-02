@@ -46,7 +46,7 @@ Optional: under Project → Settings → Domains, add a shorter address such as 
 - The page looks right on a phone (the sticky box is hidden there).
 
 ## Before sending
-- **Numbers:** the impact boxes show 30x ARR ($10K → $300K), ~74% activation lift, 10+ zero-to-one launches and 1,000+ clients. Make sure they match your resume and portfolio, which have shown different figures (e.g. 7x, $30K → $200K, 4 launches).
+- **Numbers:** the impact boxes show 7x ARR ($30K → $200K), ~74% activation lift, 4 zero-to-one launches and 1,000+ clients, matching the resume and portfolio.
 - **Claims:** the first "fit" card mentions Django/React, SQL, REST APIs and Claude Code. Keep only what you're comfortable defending in an interview.
 - **Product facts:** everything about Search Atlas comes from public pages, help docs and reviews. Items tagged "vendor claim" are their marketing. Pricing may have changed.
 - **Availability:** the job post asks for EST availability. The page doesn't mention it. Add a line if it applies.
